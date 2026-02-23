@@ -17,9 +17,9 @@ import json
 
 API_URL = "https://home-credit-api.onrender.com"
 
-# Données de démonstration (vrais clients depuis les fichiers JSON)
+# Données de démonstration (vrais clients issus du modèle)
 SAMPLE_CLIENTS = {
-    "Client 001 - Profil standard": {
+    "Client A — Faible risque ✅ (2.4%)": {
         "EXT_SOURCE_2": 0.419387842144658,
         "EXT_SOURCE_3": 0.6833170531786634,
         "DAYS_BIRTH": -27858.846009107183,
@@ -109,22 +109,7 @@ SAMPLE_CLIENTS = {
 }
 
 # Ajouter des variations pour avoir plusieurs clients
-def create_varied_client(base, factor_ext2, factor_credit, factor_annuity, factor_delay):
-    client = base.copy()
-    client["EXT_SOURCE_2"] = min(1.0, max(0.0, base["EXT_SOURCE_2"] * factor_ext2))
-    client["EXT_SOURCE_3"] = min(1.0, max(0.0, base["EXT_SOURCE_3"] * factor_ext2))
-    client["EXT_SOURCE_1"] = min(1.0, max(0.0, base["EXT_SOURCE_1"] * factor_ext2))
-    client["AMT_CREDIT"] = base["AMT_CREDIT"] * factor_credit
-    client["AMT_ANNUITY"] = base["AMT_ANNUITY"] * factor_annuity
-    client["delay_rate"] = min(1.0, base["delay_rate"] * factor_delay)
-    client["delay_mean"] = base["delay_mean"] * factor_delay
-    return client
 
-base = SAMPLE_CLIENTS["Client 001 - Profil standard"]
-SAMPLE_CLIENTS["Client 002 - Faible risque"] = create_varied_client(base, 1.4, 0.6, 0.8, 0.1)
-SAMPLE_CLIENTS["Client 003 - Risque élevé"] = create_varied_client(base, 0.4, 2.5, 1.8, 8.0)
-SAMPLE_CLIENTS["Client 004 - Profil intermédiaire"] = create_varied_client(base, 0.9, 1.2, 1.1, 2.0)
-SAMPLE_CLIENTS["Client 005 - Très faible risque"] = create_varied_client(base, 1.8, 0.4, 0.6, 0.05)
 
 # Labels lisibles pour les features importantes
 FEATURE_LABELS = {
