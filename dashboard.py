@@ -640,6 +640,11 @@ def create_feature_importance_chart(client_data: dict) -> go.Figure:
         margin=dict(t=50, b=40, l=10, r=20),
         paper_bgcolor="#F8FAFC",
         plot_bgcolor="#F1F5F9",
+        font={"family": "DM Sans"},
+        showlegend=False,
+    )
+    fig.add_annotation(
+        x=max(values) * 0.7 if values else 0.5,
         y=len(labels) - 0.5,
         text="✓ Favorable",
         showarrow=False,
