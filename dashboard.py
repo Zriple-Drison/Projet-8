@@ -635,18 +635,11 @@ def create_feature_importance_chart(client_data: dict) -> go.Figure:
             "gridcolor": "#f1f5f9",
             "zeroline": False,
         },
-        yaxis={"showgrid": False, "tickfont": {"size": 11}},
+        yaxis={"showgrid": False, "tickfont": {"size": 11, "color": "#1a1f2e"}},
         height=320,
         margin=dict(t=50, b=40, l=10, r=20),
-        paper_bgcolor="white",
-        plot_bgcolor="white",
-        font={"family": "DM Sans"},
-        showlegend=False,
-    )
-    
-    # Annotations accessibilité
-    fig.add_annotation(
-        x=max(values) * 0.7 if values else 0.5,
+        paper_bgcolor="#F8FAFC",
+        plot_bgcolor="#F1F5F9",
         y=len(labels) - 0.5,
         text="✓ Favorable",
         showarrow=False,
@@ -740,8 +733,8 @@ def create_comparison_chart(client_data: dict, feature: str) -> go.Figure:
         },
         height=300,
         margin=dict(t=50, b=40, l=10, r=20),
-        paper_bgcolor="white",
-        plot_bgcolor="white",
+        paper_bgcolor="#F8FAFC",
+        plot_bgcolor="#F1F5F9",
         font={"family": "DM Sans"},
         legend={"orientation": "h", "y": -0.2},
         bargap=0.05,
@@ -941,7 +934,7 @@ if "result" in st.session_state:
         
         st.markdown(
             f'<div class="metric-card"><h3>Profil résumé</h3>'
-            f'<div style="font-size:0.9rem;line-height:1.8;">'
+            f'<div style="font-size:0.9rem;line-height:1.8;color:#1a1f2e;">'
             f'🎂 <b>Âge :</b> {age} ans<br>'
             f'💼 <b>Emploi :</b> {emp} ans<br>'
             f'💰 <b>Crédit :</b> {credit}<br>'
